@@ -36,7 +36,14 @@ export default function Hero() {
           Scroll to explore the system
         </p>
       </div>
-      <div className="hero-right">
+      <div className="hero-right" style={{ position: "relative" }}>
+        <p className="hero-eyebrow" style={{
+          position: "absolute",
+          top: "calc(50vh - 225px)",
+          right: "1vw",
+          zIndex: 3,
+          opacity: 0.7,
+        }}>Hover to find connections</p>
         <SystemMap />
       </div>
     </section>

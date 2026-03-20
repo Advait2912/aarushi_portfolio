@@ -40,7 +40,7 @@ export default function Contact() {
         <a href="/pdfs/Aarushi_Resume.pdf" target="_blank" rel="noreferrer" className="contact-link">
           <span className="link-label">
             <span className="link-type">Resume</span>
-            Download PDF
+            View PDF
           </span>
           <span className="link-arrow">↓</span>
         </a>

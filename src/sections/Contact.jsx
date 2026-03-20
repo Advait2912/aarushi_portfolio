@@ -37,7 +37,7 @@ export default function Contact() {
           </span>
           <span className="link-arrow">→</span>
         </a>
-        <a href="#" className="contact-link">
+        <a href="/pdfs/Aarushi_Resume.pdf" download className="contact-link">
           <span className="link-label">
             <span className="link-type">Resume</span>
             Download PDF
@@ -47,7 +47,7 @@ export default function Contact() {
       </div>
 
       <p className="contact-footer fade-up" style={{ transitionDelay: "0.3s" }}>
-        AARUSHI SHARMA · SYSTEMS DESIGNER · 2024
+        AARUSHI SHARMA · SERVICE DESIGNER · 2026
       </p>
     </section>
   )

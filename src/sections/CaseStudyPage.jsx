@@ -164,7 +164,6 @@ export default function CaseStudyPage() {
                   width={containerWidth || undefined}
                   renderAnnotationLayer={false}
                   renderTextLayer={false}
-                  canvasBackground="transparent"
                   style={{ display: "block" }}
                 />
               ))}

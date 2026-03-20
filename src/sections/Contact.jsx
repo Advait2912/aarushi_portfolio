@@ -23,21 +23,21 @@ export default function Contact() {
       </p>
 
       <div className="contact-links fade-up" style={{ transitionDelay: "0.2s" }}>
-        <a href="mailto:aarushi@example.com" className="contact-link">
+        <a href="mailto:aarushi.designer0406@gmail.com" className="contact-link">
           <span className="link-label">
             <span className="link-type">Email</span>
-            aarushi@example.com
+            aarushi.designer0406@gmail.com
           </span>
           <span className="link-arrow">→</span>
         </a>
-        <a href="https://linkedin.com/in/aarushi" target="_blank" rel="noreferrer" className="contact-link">
+        <a href="https://www.linkedin.com/in/aarushi-sharma-37a761312/" target="_blank" rel="noreferrer" className="contact-link">
           <span className="link-label">
             <span className="link-type">LinkedIn</span>
-            linkedin.com/in/aarushi
+           linkedin.com/in/aarushi-sharma-37a761312/
           </span>
           <span className="link-arrow">→</span>
         </a>
-        <a href="/pdfs/Aarushi_Resume.pdf" download className="contact-link">
+        <a href="/pdfs/Aarushi_Resume.pdf" target="_blank" rel="noreferrer" className="contact-link">
           <span className="link-label">
             <span className="link-type">Resume</span>
             Download PDF

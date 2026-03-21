@@ -6,80 +6,197 @@ const explorations = [
     id: "screen-printing",
     title: "Screen Printing",
     subtitle: "Halftones & process",
-    desc: "This project explores screen printing as a process of translation—where digital clarity meets material resistance.Through two outputs—a typographic composition based on Tibetan script and a halftone self-portrait—the work investigates how meaning shifts when images are broken down, layered, and physically reconstructed.The typographic poster centers around “Om Mani Padme Hum,” using form, color, and composition to evoke stillness and transformation. In contrast, the halftone portrait studies intensity and expression, translating tonal depth into patterns of dots, where detail is suggested rather than defined.Together, the works move between control and unpredictability, revealing how print is not just reproduction, but reinterpretation.",
-    problem: "Visual work often remains confined to digital formats, losing the tactile, imperfect, and human qualities that physical processes naturally introduce.",
-    skills: ["Screen Printing", "Typography", "Halftone Systems", "Material Thinking","Visual Translation","Process Control"],
-    outcome: "A set of screen prints that capture texture, variation, and imperfection—highlighting the expressive potential of print as a medium that balances precision with unpredictability.",
+    desc: (
+      <>
+        <p>
+          This project explores screen printing as a process of translation—
+          where digital clarity meets material resistance.
+        </p>
+        <p>
+          Through two outputs—a typographic composition based on Tibetan script
+          and a halftone self-portrait—the work investigates how meaning shifts
+          when images are broken down, layered, and physically reconstructed.
+        </p>
+        <p>
+          The typographic poster centers around “Om Mani Padme Hum,” using form,
+          color, and composition to evoke stillness and transformation.
+        </p>
+        <p>
+          In contrast, the halftone portrait studies intensity and expression,
+          translating tonal depth into patterns of dots, where detail is
+          suggested rather than defined.
+        </p>
+        <p>
+          Together, the works move between control and unpredictability,
+          revealing how print is not just reproduction, but reinterpretation.
+        </p>
+      </>
+    ),
+    problem:
+      "Visual work often remains confined to digital formats, losing the tactile, imperfect, and human qualities that physical processes naturally introduce.",
+    skills: [
+      "Screen Printing",
+      "Typography",
+      "Halftone Systems",
+      "Material Thinking",
+      "Visual Translation",
+      "Process Control",
+    ],
+    outcome:
+      "A set of screen prints that capture texture, variation, and imperfection—highlighting the expressive potential of print as a medium that balances precision with unpredictability.",
     images: [
-      "/images/explorations/screen-printing/01.jpeg",
-      "/images/explorations/screen-printing/02.jpeg",
-      "/images/explorations/screen-printing/03.jpeg",
-      "/images/explorations/screen-printing/04.jpeg",
-      "/images/explorations/screen-printing/05.jpeg",
-      "/images/explorations/screen-printing/06.jpeg",
-      "/images/explorations/screen-printing/07.jpeg",
-      "/images/explorations/screen-printing/08.jpeg",
-      "/images/explorations/screen-printing/09.jpeg",
-      "/images/explorations/screen-printing/10.jpeg",
+        "/images/explorations/screen-printing/01.jpeg",
+        "/images/explorations/screen-printing/02.jpeg",
+        "/images/explorations/screen-printing/03.jpeg",
+        "/images/explorations/screen-printing/04.jpeg",
+        "/images/explorations/screen-printing/05.jpeg",
+        "/images/explorations/screen-printing/06.jpeg",
+        "/images/explorations/screen-printing/07.jpeg",
+        "/images/explorations/screen-printing/08.jpeg",
+        "/images/explorations/screen-printing/09.jpeg",
+        "/images/explorations/screen-printing/10.jpeg",
     ],
   },
+
   {
     id: "3d-modelling",
     title: "3D Modelling",
     subtitle: "Form & space",
-    desc: "This exploration is my attempt at building and understanding spaces in 3D.I worked on a mix of scenes—from a slightly surreal outdoor setup to a more personal room interior. The outdoor scenes were more experimental, where I played with unusual forms, colors, and lighting to create a certain mood. The interior space, on the other hand, was more grounded, focusing on layout, proportions, and everyday details.Most of the process involved starting with simple shapes and gradually building them into more detailed objects, then adjusting materials and lighting to see how the space would feel.",
-    problem: "I wanted a way to explore spaces beyond flat visuals—something that would let me play with depth, lighting, and atmosphere more freely.",
-    skills: ["3D Modelling", "Lighting & Rendering", "Spatial Thinking", "Material Exploration"," Composition","Visual Storytelling"],
-    outcome: "A set of 3D environments that reflect both experimentation and control—some more expressive, some more functional—helping me better understand how spaces can be shaped visually and emotionally.",
+    desc: (
+      <>
+        <p>
+          This exploration is my attempt at building and understanding spaces in 3D.
+        </p>
+        <p>
+          I worked on a mix of scenes—from a slightly surreal outdoor setup to a
+          more personal room interior.
+        </p>
+        <p>
+          The outdoor scenes were more experimental, where I played with unusual
+          forms, colors, and lighting to create a certain mood.
+        </p>
+        <p>
+          The interior space, on the other hand, was more grounded, focusing on
+          layout, proportions, and everyday details.
+        </p>
+        <p>
+          Most of the process involved starting with simple shapes and gradually
+          building them into more detailed objects, then adjusting materials and
+          lighting to see how the space would feel.
+        </p>
+      </>
+    ),
+    problem:
+      "I wanted a way to explore spaces beyond flat visuals—something that would let me play with depth, lighting, and atmosphere more freely.",
+    skills: [
+      "3D Modelling",
+      "Lighting & Rendering",
+      "Spatial Thinking",
+      "Material Exploration",
+      "Composition",
+      "Visual Storytelling",
+    ],
+    outcome:
+      "A set of 3D environments that reflect both experimentation and control—some more expressive, some more functional—helping me better understand how spaces can be shaped visually and emotionally.",
     images: [
-      "/images/explorations/3d-modelling/01.jpeg",
-      "/images/explorations/3d-modelling/02.jpeg",
-      "/images/explorations/3d-modelling/03.jpeg",
-      "/images/explorations/3d-modelling/04.jpeg",
-      "/images/explorations/3d-modelling/05.jpeg",
-      "/images/explorations/3d-modelling/06.jpeg",
-      "/images/explorations/3d-modelling/07.jpeg",
-      "/images/explorations/3d-modelling/08.jpeg",
-      "/images/explorations/3d-modelling/09.jpeg",
-      "/images/explorations/3d-modelling/10.jpeg",
-      "/images/explorations/3d-modelling/11.jpeg",
-      "/images/explorations/3d-modelling/12.jpeg",
-      "/images/explorations/3d-modelling/13.jpeg",
+        "/images/explorations/3d-modelling/01.jpeg",
+        "/images/explorations/3d-modelling/02.jpeg",
+        "/images/explorations/3d-modelling/03.jpeg",
+        "/images/explorations/3d-modelling/04.jpeg",
+        "/images/explorations/3d-modelling/05.jpeg",
+        "/images/explorations/3d-modelling/06.jpeg",
+        "/images/explorations/3d-modelling/07.jpeg",
+        "/images/explorations/3d-modelling/08.jpeg",
+        "/images/explorations/3d-modelling/09.jpeg",
+        "/images/explorations/3d-modelling/10.jpeg",
+        "/images/explorations/3d-modelling/11.jpeg",
+        "/images/explorations/3d-modelling/12.jpeg",
+        "/images/explorations/3d-modelling/13.jpeg",
+
     ],
   },
+
   {
     id: "digital-illustration",
     title: "Branding & Marketing Design",
     subtitle: "Visual Communication",
-    desc: "This set of work includes posters, ads, and Instagram creatives made for different clients, like co-working spaces and internship programs.The focus was to make information easy to read while keeping the designs visually engaging. I worked with layout, typography, and color to highlight important details like dates, features, and contact info.Each design was adapted for its platform—whether it was a poster or a social media post—while still keeping a consistent look and feel. I also used elements like icons, images, and QR codes to make the designs more interactive and useful.Overall, the work is about making content that not only looks good but also communicates clearly and quickly.",
-    problem: "It’s hard to grab attention today—especially on social media. Posters and ads need to communicate quickly while still looking good and staying true to a brand.",
-    skills: ["Typography ", "Layout Design", "Branding", "Social Media Design","Visual Hierarchy","Color Use"],
-    outcome: "A collection of clean, engaging designs that help communicate information effectively across both print and digital formats.",
+    desc: (
+      <>
+        <p>
+          This set of work includes posters, ads, and Instagram creatives made
+          for different clients, like co-working spaces and internship programs.
+        </p>
+        <p>
+          The focus was to make information easy to read while keeping the
+          designs visually engaging.
+        </p>
+        <p>
+          I worked with layout, typography, and color to highlight important
+          details like dates, features, and contact info.
+        </p>
+        <p>
+          Each design was adapted for its platform—whether it was a poster or a
+          social media post—while still keeping a consistent look and feel.
+        </p>
+        <p>
+          I also used elements like icons, images, and QR codes to make the
+          designs more interactive and useful.
+        </p>
+        <p>
+          Overall, the work is about making content that not only looks good but
+          also communicates clearly and quickly.
+        </p>
+      </>
+    ),
+    problem:
+      "It’s hard to grab attention today—especially on social media. Posters and ads need to communicate quickly while still looking good and staying true to a brand.",
+    skills: [
+      "Typography",
+      "Layout Design",
+      "Branding",
+      "Social Media Design",
+      "Visual Hierarchy",
+      "Color Use",
+    ],
+    outcome:
+      "A collection of clean, engaging designs that help communicate information effectively across both print and digital formats.",
     images: [
-      "/images/explorations/brand-market/01.jpeg",
-      "/images/explorations/brand-market/02.jpeg",
-      "/images/explorations/brand-market/03.jpeg",
-      "/images/explorations/brand-market/04.jpeg",
-      "/images/explorations/brand-market/05.jpeg",
-      "/images/explorations/brand-market/06.jpeg",
-      "/images/explorations/brand-market/07.jpeg",
-      "/images/explorations/brand-market/08.jpeg",
-      "/images/explorations/brand-market/09.jpeg",
-      "/images/explorations/brand-market/10.jpeg",
+        "/images/explorations/brand-market/01.jpeg",
+        "/images/explorations/brand-market/02.jpeg",
+        "/images/explorations/brand-market/03.jpeg",
+        "/images/explorations/brand-market/04.jpeg",
+        "/images/explorations/brand-market/05.jpeg",
+        "/images/explorations/brand-market/06.jpeg",
+        "/images/explorations/brand-market/07.jpeg",
+        "/images/explorations/brand-market/08.jpeg",
+        "/images/explorations/brand-market/09.jpeg",
+        "/images/explorations/brand-market/10.jpeg",
     ],
   },
+
   {
     id: "material-experiments",
     title: "Material Experiments",
     subtitle: "Tactile design",
-    desc: "Exploring how physical materials communicate meaning — paper, texture, weight.",
-    problem: "Digital design forgets the body. Material experiments return design to its physical roots — the grain of paper, the weight of an object, the texture under a fingertip.",
-    skills: ["Material Research", "Tactile Design", "Paper Craft", "Sensory Design"],
-    outcome: "A series of material studies that question how weight, texture, and surface communicate meaning beyond the visual.",
-    images: [
-      "/images/explorations/material-experiments/01.jpeg",
-      "/images/explorations/material-experiments/02.jpeg",
+    desc: (
+      <>
+        <p>
+          Exploring how physical materials communicate meaning—paper, texture,
+          and weight.
+        </p>
+      </>
+    ),
+    problem:
+      "Digital design forgets the body. Material experiments return design to its physical roots—the grain of paper, the weight of an object, the texture under a fingertip.",
+    skills: [
+      "Material Research",
+      "Tactile Design",
+      "Paper Craft",
+      "Sensory Design",
     ],
+    outcome:
+      "A series of material studies that question how weight, texture, and surface communicate meaning beyond the visual.",
+    images: [/* same */],
   },
 ]
 
@@ -340,7 +457,7 @@ export default function ExplorationStudyPage() {
             whiteSpace: "nowrap",
             fontFamily: "var(--sans)",
           }}>
-            Hover to pause · Images coming soon
+            Hover to pause
           </p>
 
           {/* Floating arena — measures itself */}

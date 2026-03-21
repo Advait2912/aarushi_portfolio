@@ -16,35 +16,118 @@ const projects = [
     title: "Krate Kart",
     subtitle: "Vendor Ecosystem",
     tags: ["Service Design", "Strategy"],
-    desc: "Krate Kart is a modular storage system designed to fit existing vendor carts, enabling better organization, flexibility, and hygiene. It supports vendors in managing perishable goods more efficiently while improving the customer's shopping experience.",
-    problem: "Street vendors operate in limited, cluttered spaces with inadequate storage and waste systems, leading to product damage, inefficiency, and loss of income.",
+    desc: (
+      <>
+        <p>
+          Krate Kart is a modular storage system designed to fit existing vendor carts,
+          enabling better organization, flexibility, and hygiene.
+        </p>
+        <p>
+          It supports vendors in managing perishable goods more efficiently while
+          improving the customer's shopping experience.
+        </p>
+      </>
+    ),
+    problem: (
+      <>
+        <p>
+          Street vendors operate in limited, cluttered spaces with inadequate storage
+          and waste systems.
+        </p>
+        <p>
+          This leads to product damage, inefficiency, and loss of income.
+        </p>
+      </>
+    ),
     skills: ["Field Research", "Product Design", "Prototyping", "User Testing"],
-    outcome: "A practical, scalable solution that improves vendor workflow, reduces waste, and creates cleaner, more organized street retail environments.",
+    outcome: (
+      <>
+        <p>
+          A practical, scalable solution that improves vendor workflow, reduces waste,
+          and creates cleaner, more organized street retail environments.
+        </p>
+      </>
+    ),
   },
+
   {
     id: "emotion-ai",
     pdf: "",
     title: "Emotion AI App",
     subtitle: "Experience Design · AI",
     tags: ["Experience Design", "AI"],
-    desc: "An emotional intelligence interface that helps users understand and navigate their emotional patterns through AI-assisted reflection.",
-    problem: "People struggle to identify emotional patterns that affect their decision-making and relationships.",
+    desc: (
+      <>
+        <p>
+          An emotional intelligence interface that helps users understand and navigate
+          their emotional patterns.
+        </p>
+        <p>
+          It uses AI-assisted reflection to support awareness and decision-making.
+        </p>
+      </>
+    ),
+    problem: (
+      <>
+        <p>
+          People struggle to identify emotional patterns that affect their decisions
+          and relationships.
+        </p>
+      </>
+    ),
     skills: ["Psychology", "UX Design", "Behavioural Science", "Prototyping"],
-    outcome: "A conversational journal concept with emotion mapping and pattern recognition features.",
+    outcome: (
+      <>
+        <p>
+          A conversational journal concept with emotion mapping and pattern recognition.
+        </p>
+      </>
+    ),
   },
+
   {
     id: "sleep-system",
     pdf: "/pdfs/YuluWalk.pdf",
     title: "YuluWalk",
     subtitle: "Urban Explorations",
     tags: ["Systems Thinking", "Research"],
-    desc: "Yulu Walk is a service feature integrated into the Yulu app that transforms walking into a guided, engaging experience. It combines curated routes, local insights, and community interaction to make city exploration more accessible and meaningful.",
-    problem: "New residents in Bangalore struggle to explore the city on foot due to unsafe infrastructure, unclear routes, and a lack of guidance, making walking feel stressful rather than enjoyable.",
+    desc: (
+      <>
+        <p>
+          Yulu Walk is a service feature integrated into the Yulu app that transforms
+          walking into a guided, engaging experience.
+        </p>
+        <p>
+          It combines curated routes, local insights, and community interaction to make
+          city exploration more accessible and meaningful.
+        </p>
+      </>
+    ),
+    problem: (
+      <>
+        <p>
+          New residents in Bangalore struggle to explore the city on foot due to unsafe
+          infrastructure, unclear routes, and lack of guidance.
+        </p>
+        <p>
+          Walking feels stressful instead of enjoyable.
+        </p>
+      </>
+    ),
     skills: ["Research", "Systems Mapping", "Service Design", "UX Design"],
-    outcome: "A service concept that reframes walking as a safe, structured, and enjoyable way to experience the city, encouraging deeper connection and exploration.",
+    outcome: (
+      <>
+        <p>
+          A service concept that reframes walking as a safe, structured, and enjoyable
+          way to experience the city.
+        </p>
+        <p>
+          It encourages deeper connection and exploration.
+        </p>
+      </>
+    ),
   },
 ]
-
 export default function CaseStudyPage() {
   const { id } = useParams()
   const navigate = useNavigate()

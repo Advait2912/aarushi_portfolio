@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, useCallback } from "react"
 
 const influences = [
   { label: "Psychology",           x: "36%", y: "4%",  desc: "Understanding what people feel, even when they can't explain it." },
@@ -20,6 +20,7 @@ export default function SystemInputs() {
   const [conSize, setConSize] = useState({ w: 0, h: 0 })
   const [hoveredCenter, setHoveredCenter] = useState(false)
   const [hoveredInf, setHoveredInf] = useState(null)
+  const [imgHovered, setImgHovered] = useState(false)
 
   useEffect(() => {
     const obs = new IntersectionObserver(entries => {
@@ -72,22 +73,24 @@ export default function SystemInputs() {
     <section id="system-inputs" className="system-inputs" ref={sectionRef} style={{ alignItems: "stretch", padding: 0 }}>
 
       <div style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 320px",
+        display: "flex",
+        flexDirection: "column",
         width: "100%",
         minHeight: "100%",
       }}>
 
-        {/* ── LEFT col: About Me + Constellation ── */}
+        {/* ── TOP ROW: About Me text + Photo side by side ── */}
         <div style={{
-          padding: "100px 60px 100px 2vw",
-          display: "flex",
-          flexDirection: "column",
-          gap: "0",
+          display: "grid",
+          gridTemplateColumns: "1fr 300px",
+          width: "100%",
+          padding: "100px 60px 0 2vw",
+          gap: "40px",
+          alignItems: "start",
         }}>
 
-          {/* About Me */}
-          <div className="fade-up" style={{ marginBottom: "60px" }}>
+          {/* About Me text */}
+          <div className="fade-up" style={{ marginBottom: "0" }}>
             <h2 style={{
               fontFamily: "var(--serif)", fontSize: "clamp(30px,4vw,52px)",
               fontWeight: 400, lineHeight: 1.1, marginBottom: "16px",
@@ -101,6 +104,84 @@ export default function SystemInputs() {
               When I'm not mapping systems, I'm probably questioning why the system exists in the first place.
             </p>
           </div>
+
+          {/* ── Photo — aligned only with About Me text, shifted up ── */}
+          <div
+            className="fade-up"
+            style={{ transitionDelay: "0.15s", marginTop: "-40px" }}
+            onMouseEnter={() => setImgHovered(true)}
+            onMouseLeave={() => setImgHovered(false)}
+          >
+            <div style={{
+              width: "100%",
+              aspectRatio: "3/4",
+              borderRadius: "16px",
+              border: "1px solid var(--border)",
+              background: "var(--white)",
+              overflow: "hidden",
+              position: "relative",
+              cursor: "pointer",
+            }}>
+              {/* Default image */}
+              <img
+                src="/images/image-default.png"
+                alt="Aarushi"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  opacity: imgHovered ? 0 : 1,
+                  transition: "opacity 0.5s ease",
+                }}
+                onError={(e) => { e.target.style.display = "none" }}
+              />
+              {/* Hover image */}
+              <img
+                src="/images/image-hover.png"
+                alt="Aarushi alternate"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  opacity: imgHovered ? 1 : 0,
+                  transition: "opacity 0.5s ease",
+                }}
+                onError={(e) => { e.target.style.display = "none" }}
+              />
+              {/* Fallback placeholder (shown when images fail) */}
+              <div style={{
+                position: "absolute",
+                inset: 0,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "10px",
+                color: "var(--text-muted)",
+                fontSize: "11px",
+                letterSpacing: ".1em",
+                textTransform: "uppercase",
+                zIndex: -1,
+              }}>
+                <span style={{ fontSize: "40px", opacity: 0.15 }}>◻</span>
+                Photo
+              </div>
+            </div>
+          </div>
+
+        </div>{/* end top row */}
+
+        {/* ── BOTTOM ROW: What Shapes My Thinking + Constellation (full width) ── */}
+        <div style={{
+          padding: "60px 60px 100px 2vw",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0",
+        }}>
 
           {/* What Shapes My Thinking */}
           <div className="fade-up" style={{ transitionDelay: "0.1s", marginBottom: "40px" }}>
@@ -204,41 +285,7 @@ export default function SystemInputs() {
             ))}
           </div>
 
-        </div>{/* end left col */}
-
-        {/* ── RIGHT col: photo spanning full section height ── */}
-        <div style={{
-          /*borderLeft: "1px solid var(--border)",*/
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "40px 28px",
-          position: "sticky",
-          top: 0,
-          alignSelf: "start",
-          height: "100vh",
-        }}>
-          <div style={{
-            width: "100%",
-            aspectRatio: "3/4",
-            borderRadius: "16px",
-            border: "1px solid var(--border)",
-            background: "var(--white)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
-            color: "var(--text-muted)",
-            fontSize: "11px",
-            letterSpacing: ".1em",
-            textTransform: "uppercase",
-            overflow: "hidden",
-          }}>
-            <span style={{ fontSize: "40px", opacity: 0.15 }}>◻</span>
-            Photo
-          </div>
-        </div>
+        </div>{/* end bottom row */}
 
       </div>
     </section>

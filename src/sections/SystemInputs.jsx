@@ -1,17 +1,17 @@
 import { useRef, useEffect, useState } from "react"
 
 const influences = [
-  { label: "Psychology",           x: "40%", y: "8%",  desc: "Understanding what people feel, even when they can't explain it." },
-  { label: "Visual Communication", x: "10%", y: "42%", desc: "Making ideas clear, visual, and meaningful." },
-  { label: "Systems Thinking",     x: "85%", y: "42%", desc: "Seeing the bigger picture behind how everything works." },
-  { label: "Behavioural Science",  x: "18%", y: "82%", desc: "People are irrational in predictable ways. Design for who they are, not who we wish they were." },
-  { label: "Service Design",       x: "78%", y: "82%", desc: "Bringing everything together into real-world experiences." },
-  { label: "Research",             x: "50%", y: "80%", desc: "Sitting with the problem before trying to solve it." },
-  { label: "Pattern Recognition",  x: "60%", y: "18%", desc: "Finding connections across people, systems, and experiences." },
-  { label: "Emotional Insight",    x: "10%", y: "10%", desc: "Noticing what people feel beneath the surface." },
+  { label: "Psychology",           x: "36%", y: "4%",  desc: "Understanding what people feel, even when they can't explain it." },
+  { label: "Pattern Recognition",  x: "58%", y: "20%", desc: "Finding connections across people, systems, and experiences." },
+  { label: "Systems Thinking",     x: "60%", y: "45%", desc: "Seeing the bigger picture behind how everything works." },
+  { label: "Service Design",       x: "60%", y: "72%", desc: "Bringing everything together into real-world experiences." },
+  { label: "Research",             x: "34%", y: "84%", desc: "Sitting with the problem before trying to solve it." },
+  { label: "Behavioural Science",  x: "4%",  y: "72%", desc: "People are irrational in predictable ways. Design for who they are, not who we wish they were." },
+  { label: "Visual Communication", x: "-2%",  y: "44%", desc: "Making ideas clear, visual, and meaningful." },
+  { label: "Emotional Insight",    x: "4%",  y: "16%", desc: "Noticing what people feel beneath the surface." },
 ]
 
-const CENTER = { x: "50%", y: "46%" }
+const CENTER = { x: "36%", y: "46%" }
 const CENTER_DESC = "Designer, systems thinker, and someone who asks too many questions."
 
 export default function SystemInputs() {
@@ -80,7 +80,7 @@ export default function SystemInputs() {
 
         {/* ── LEFT col: About Me + Constellation ── */}
         <div style={{
-          padding: "100px 60px 100px 6vw",
+          padding: "100px 60px 100px 2vw",
           display: "flex",
           flexDirection: "column",
           gap: "0",

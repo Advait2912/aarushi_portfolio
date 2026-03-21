@@ -2,10 +2,10 @@ import { useRef, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 const projects = [
-  { id: "meta-counsel",  title: "Meta Counsel Campaign",   subtitle: "Service Design · Strategy",   icon: "⚖️" },
-  { id: "emotion-ai",   title: "Emotion AI App",           subtitle: "Experience Design · AI",       icon: "🧠" },
-  { id: "sleep-system", title: "Sleep Experience System",  subtitle: "Systems Thinking · Research",  icon: "🌙" },
-  { id: null,           title: "Coming Soon",              subtitle: "In Progress",                  icon: "✦", placeholder: true },
+  { id: "meta-counsel",  title: "Krate Kart",    subtitle: "Vendor Ecosystem",       image: "/images_projects/title_1.jpeg" },
+  { id: "emotion-ai",   title: "Emotion AI App", subtitle: "Experience Design · AI", image: null, placeholder: true },
+  { id: "sleep-system", title: "YuluWalk",        subtitle: "Urban Explorations",     image: "/images_projects/title_3.jpeg" },
+  { id: null,           title: "Coming Soon",     subtitle: "In Progress",            image: null, placeholder: true },
 ]
 
 export default function Projects() {
@@ -43,8 +43,16 @@ export default function Projects() {
             style={{ transitionDelay: `${0.1 + i * 0.07}s`, cursor: p.placeholder ? "default" : "pointer" }}
             onClick={() => p.id && navigate(`/case-study/${p.id}`)}
           >
-            <div className="card-preview" style={{ fontSize: p.placeholder ? "22px" : "44px", opacity: p.placeholder ? 0.3 : 1 }}>
-              {p.icon}
+            <div className="card-preview" style={{ padding: 0, overflow: "hidden" }}>
+              {p.image ? (
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                />
+              ) : (
+                <span style={{ fontSize: "22px", opacity: 0.3 }}>✦</span>
+              )}
             </div>
             <div className="card-info">
               <p className="card-title">{p.title}</p>

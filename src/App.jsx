@@ -12,7 +12,7 @@ import SideExplorations from './sections/SideExplorations'
 import OverwhelmMode from './sections/OverwhelmMode'
 import Contact from './sections/Contact'
 import CaseStudyPage from './sections/CaseStudyPage'
-import ExplorationsPage from './sections/ExplorationsPage'
+import ExplorationStudyPage from './sections/ExplorationStudyPage'
 
 function Portfolio() {
   return (
@@ -38,7 +38,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Portfolio />} />
         <Route path="/case-study/:id" element={<CaseStudyPage />} />
-        <Route path="/explorations" element={<ExplorationsPage />} />
+        <Route path="/exploration/:id" element={<ExplorationStudyPage />} />
       </Routes>
     </>
   )

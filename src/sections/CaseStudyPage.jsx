@@ -13,13 +13,13 @@ const projects = [
   {
     id: "meta-counsel",
     pdf: "/pdfs/KrateKart.pdf",   // e.g. "/pdfs/meta-counsel-process.pdf"
-    title: "Meta Counsel Campaign",
-    subtitle: "Service Design · Strategy",
+    title: "Krate Kart",
+    subtitle: "Vendor Ecosystem",
     tags: ["Service Design", "Strategy"],
-    desc: "A service design campaign reimagining legal counsel accessibility for independent creators navigating platform policies.",
-    problem: "Independent creators on Meta platforms faced confusing, inaccessible legal guidelines with no clear support pathways.",
-    skills: ["Research", "Systems Mapping", "Content Strategy", "UX Design"],
-    outcome: "A tiered support system concept reducing time-to-resolution for creator disputes.",
+    desc: "Krate Kart is a modular storage system designed to fit existing vendor carts, enabling better organization, flexibility, and hygiene. It supports vendors in managing perishable goods more efficiently while improving the customer’s shopping experience.",
+    problem: "Street vendors operate in limited, cluttered spaces with inadequate storage and waste systems, leading to product damage, inefficiency, and loss of income.",
+    skills: ["Field Research", "Product Design", "Prototyping", "User Testing"],
+    outcome: "A practical, scalable solution that improves vendor workflow, reduces waste, and creates cleaner, more organized street retail environments.",
     process: [
       { sketch: "Initial service blueprint", caption: "\"started with the creator journey — 14 touchpoints, all broken\"" },
       { sketch: "Stakeholder map", caption: "\"three different teams owned the same problem — no one knew\"" },
@@ -46,14 +46,14 @@ const projects = [
   },
   {
     id: "sleep-system",
-    pdf: "",   // e.g. "/pdfs/sleep-system-process.pdf"
-    title: "Sleep Experience System",
-    subtitle: "Systems Thinking · Research",
+    pdf: "/pdfs/YuluWalk.pdf",   // e.g. "/pdfs/sleep-system-process.pdf"
+    title: "YuluWalk",
+    subtitle: "Urban Explorations",
     tags: ["Systems Thinking", "Research"],
-    desc: "A holistic system redesign of the sleep experience, addressing environmental, behavioural, and social factors.",
-    problem: "Existing sleep products solve isolated problems without addressing the interconnected system of sleep health.",
-    skills: ["Service Design", "Research", "Systems Thinking", "Interaction Design"],
-    outcome: "A service ecosystem spanning environment design, behavioural nudges, and social accountability.",
+    desc: "Yulu Walk is a service feature integrated into the Yulu app that transforms walking into a guided, engaging experience. It combines curated routes, local insights, and community interaction to make city exploration more accessible and meaningful.",
+    problem: "New residents in Bangalore struggle to explore the city on foot due to unsafe infrastructure, unclear routes, and a lack of guidance, making walking feel stressful rather than enjoyable.",
+    skills: ["Research", "Systems Mapping", "Service Design", "UX Design"],
+    outcome: "A service concept that reframes walking as a safe, structured, and enjoyable way to experience the city, encouraging deeper connection and exploration.",
     process: [
       { sketch: "System map draft", caption: "\"mapped 9 variables — only 3 were addressable by design\"" },
       { sketch: "Behavioural audit", caption: "\"people's sleep rituals were deeply personal — not hackable\"" },

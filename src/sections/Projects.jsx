@@ -23,7 +23,7 @@ export default function Projects() {
   }, [])
 
   return (
-    <section id="projects" className="explorations" ref={ref}>
+    <section id="projects" className="projects-section" ref={ref}>
 
       <div className="section-header" style={{ textAlign: "left" }}>
         <p className="section-label fade-up">Work</p>

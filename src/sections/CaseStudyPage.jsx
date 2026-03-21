@@ -12,24 +12,18 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 const projects = [
   {
     id: "meta-counsel",
-    pdf: "/pdfs/KrateKart.pdf",   // e.g. "/pdfs/meta-counsel-process.pdf"
+    pdf: "/pdfs/KrateKart.pdf",
     title: "Krate Kart",
     subtitle: "Vendor Ecosystem",
     tags: ["Service Design", "Strategy"],
-    desc: "Krate Kart is a modular storage system designed to fit existing vendor carts, enabling better organization, flexibility, and hygiene. It supports vendors in managing perishable goods more efficiently while improving the customer’s shopping experience.",
+    desc: "Krate Kart is a modular storage system designed to fit existing vendor carts, enabling better organization, flexibility, and hygiene. It supports vendors in managing perishable goods more efficiently while improving the customer's shopping experience.",
     problem: "Street vendors operate in limited, cluttered spaces with inadequate storage and waste systems, leading to product damage, inefficiency, and loss of income.",
     skills: ["Field Research", "Product Design", "Prototyping", "User Testing"],
     outcome: "A practical, scalable solution that improves vendor workflow, reduces waste, and creates cleaner, more organized street retail environments.",
-    process: [
-      { sketch: "Initial service blueprint", caption: "\"started with the creator journey — 14 touchpoints, all broken\"" },
-      { sketch: "Stakeholder map", caption: "\"three different teams owned the same problem — no one knew\"" },
-      { sketch: "Tiered system v2", caption: "\"simplified to: identify → route → resolve\"" },
-    ],
-    insight: "The real problem wasn't legal complexity — it was that creators didn't know what kind of help they needed.",
   },
   {
     id: "emotion-ai",
-    pdf: "",   // e.g. "/pdfs/emotion-ai-process.pdf"
+    pdf: "",
     title: "Emotion AI App",
     subtitle: "Experience Design · AI",
     tags: ["Experience Design", "AI"],
@@ -37,16 +31,10 @@ const projects = [
     problem: "People struggle to identify emotional patterns that affect their decision-making and relationships.",
     skills: ["Psychology", "UX Design", "Behavioural Science", "Prototyping"],
     outcome: "A conversational journal concept with emotion mapping and pattern recognition features.",
-    process: [
-      { sketch: "First concept sketch", caption: "\"first version too complex — users felt judged\"" },
-      { sketch: "User interview notes", caption: "\"user interviews completely changed direction\"" },
-      { sketch: "Revised flow v2", caption: "\"simplified to just: write → reflect → see pattern\"" },
-    ],
-    insight: "The AI shouldn't explain emotions — it should just show them back to the user over time.",
   },
   {
     id: "sleep-system",
-    pdf: "/pdfs/YuluWalk.pdf",   // e.g. "/pdfs/sleep-system-process.pdf"
+    pdf: "/pdfs/YuluWalk.pdf",
     title: "YuluWalk",
     subtitle: "Urban Explorations",
     tags: ["Systems Thinking", "Research"],
@@ -54,12 +42,6 @@ const projects = [
     problem: "New residents in Bangalore struggle to explore the city on foot due to unsafe infrastructure, unclear routes, and a lack of guidance, making walking feel stressful rather than enjoyable.",
     skills: ["Research", "Systems Mapping", "Service Design", "UX Design"],
     outcome: "A service concept that reframes walking as a safe, structured, and enjoyable way to experience the city, encouraging deeper connection and exploration.",
-    process: [
-      { sketch: "System map draft", caption: "\"mapped 9 variables — only 3 were addressable by design\"" },
-      { sketch: "Behavioural audit", caption: "\"people's sleep rituals were deeply personal — not hackable\"" },
-      { sketch: "Ecosystem v3", caption: "\"final model: environment + habit + social loop\"" },
-    ],
-    insight: "Sleep isn't a product problem. It's a rhythm problem — and rhythms need systems, not apps.",
   },
 ]
 
@@ -68,16 +50,18 @@ export default function CaseStudyPage() {
   const navigate = useNavigate()
   const project = projects.find(p => p.id === id)
   const [numPages, setNumPages] = useState(null)
+  const [pdfLoading, setPdfLoading] = useState(true)
   const [containerWidth, setContainerWidth] = useState(null)
   const containerRef = useCallback(node => {
     if (node) setContainerWidth(node.getBoundingClientRect().width)
   }, [])
 
   useEffect(() => { window.scrollTo(0, 0) }, [])
+  useEffect(() => { setPdfLoading(true); setNumPages(null) }, [id])
 
   if (!project) {
     return (
-      <div style={{ minHeight: "100vh", background: "lab(92.22% -13.94 -4.11)", display: "flex", alignItems: "center", justifyContent: "center", paddingTop: "60px", position: "relative", zIndex: 2 }}>
+      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", paddingTop: "60px", position: "relative", zIndex: 2 }}>
         <p style={{ color: "var(--text-muted)" }}>Project not found.</p>
       </div>
     )
@@ -145,29 +129,45 @@ export default function CaseStudyPage() {
           </button>
         </div>
 
-        {/* RIGHT — react-pdf, no browser chrome */}
+        {/* RIGHT — react-pdf */}
         <div className="case-right" ref={containerRef}>
           {project.pdf ? (
-            <Document
-              file={project.pdf}
-              onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-              loading={
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100vh", color: "var(--text-muted)", fontSize: 13, letterSpacing: ".06em" }}>
-                  Loading PDF...
-                </div>
-              }
-            >
-              {Array.from({ length: numPages || 0 }, (_, i) => (
-                <Page
-                  key={i + 1}
-                  pageNumber={i + 1}
-                  width={containerWidth || undefined}
-                  renderAnnotationLayer={false}
-                  renderTextLayer={false}
-                  style={{ display: "block" }}
-                />
-              ))}
-            </Document>
+            <>
+              {/* Loading bar */}
+              <div style={{
+                position: "sticky",
+                top: 0,
+                height: "2px",
+                background: "var(--border)",
+                zIndex: 10,
+                opacity: pdfLoading ? 1 : 0,
+                transition: "opacity .5s ease .3s",
+              }}>
+                <div style={{
+                  height: "100%",
+                  background: "var(--indigo)",
+                  width: pdfLoading ? "80%" : "100%",
+                  transition: pdfLoading ? "width 2.5s cubic-bezier(0.1,0.4,0.6,1)" : "width .2s ease",
+                }} />
+              </div>
+
+              <Document
+                file={project.pdf}
+                onLoadSuccess={({ numPages }) => { setNumPages(numPages); setPdfLoading(false) }}
+                loading={null}
+              >
+                {Array.from({ length: numPages || 0 }, (_, i) => (
+                  <Page
+                    key={i + 1}
+                    pageNumber={i + 1}
+                    width={containerWidth || undefined}
+                    renderAnnotationLayer={false}
+                    renderTextLayer={false}
+                    style={{ display: "block" }}
+                  />
+                ))}
+              </Document>
+            </>
           ) : (
             <div style={{
               width: "100%",

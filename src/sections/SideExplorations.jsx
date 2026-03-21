@@ -26,14 +26,14 @@ const explorations = [
   },
   {
     id: "digital-illustration",
-    title: "Digital Illustration",
-    subtitle: "Editorial work",
+    title: "Branding & Marketing Design",
+    subtitle: "Visual Communication",
     images: [
-      "/images/explorations/digital-illustration/01.jpeg",
-      "/images/explorations/digital-illustration/02.jpeg",
-      "/images/explorations/digital-illustration/03.jpeg",
-      "/images/explorations/digital-illustration/04.jpeg",
-      "/images/explorations/digital-illustration/05.jpeg",
+      "/images/explorations/brand-market/01.jpeg",
+      "/images/explorations/brand-market/02.jpeg",
+      "/images/explorations/brand-market/03.jpeg",
+      "/images/explorations/brand-market/04.jpeg",
+      "/images/explorations/brand-market/05.jpeg",
     ],
   },
   {
@@ -52,11 +52,19 @@ export default function SideExplorations() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.querySelectorAll(".fade-up").forEach(el => el.classList.add("visible"))
-      })
-    }, { threshold: 0.1 })
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target
+              .querySelectorAll(".fade-up")
+              .forEach((el) => el.classList.add("visible"))
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
     if (ref.current) obs.observe(ref.current)
     return () => obs.disconnect()
   }, [])
@@ -65,37 +73,107 @@ export default function SideExplorations() {
     <section id="explorations" className="explorations" ref={ref}>
       <div className="section-header" style={{ textAlign: "left" }}>
         <p className="section-label fade-up">Beyond the Brief</p>
-        <h2 className="fade-up" style={{ fontFamily: "var(--serif)", fontSize: "clamp(30px,4vw,52px)", fontWeight: 400, marginTop: 12, transitionDelay: "0.1s" }}>
+
+        <h2
+          className="fade-up"
+          style={{
+            fontFamily: "var(--serif)",
+            fontSize: "clamp(30px,4vw,52px)",
+            fontWeight: 400,
+            marginTop: 12,
+            transitionDelay: "0.1s",
+          }}
+        >
           Side Explorations
         </h2>
-        <p className="fade-up" style={{ fontSize: 15, color: "var(--text-muted)", fontWeight: 300, marginTop: 12, transitionDelay: "0.15s" }}>
+
+        <p
+          className="fade-up"
+          style={{
+            fontSize: 15,
+            color: "var(--text-muted)",
+            fontWeight: 300,
+            marginTop: 12,
+            transitionDelay: "0.15s",
+          }}
+        >
           Design is also play. These are the experiments that feed the work.
         </p>
       </div>
 
       <div className="explorations-grid">
-        {explorations.map((exp, i) => (
-          <div
-            key={i}
-            className="exploration-card fade-up"
-            style={{ transitionDelay: `${0.1 + i * 0.07}s` }}
-            onClick={() => navigate(`/exploration/${exp.id}`)}
-          >
-            {/* Thumbnail — first image, falls back to a neutral placeholder */}
-            <div className="card-preview" style={{ padding: 0, overflow: "hidden", background: "#e8e4e0" }}>
-              <img
-                src={exp.images[0]}
-                alt={exp.title}
-                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                onError={e => { e.currentTarget.style.display = "none" }}
-              />
+        {explorations.map((exp, i) => {
+          const comingSoon = i === 3
+
+          return (
+            <div
+              key={i}
+              className="exploration-card fade-up"
+              style={{
+                transitionDelay: `${0.1 + i * 0.07}s`,
+                opacity: comingSoon ? 0.5 : 1,
+                cursor: comingSoon ? "default" : "pointer",
+              }}
+              onClick={() =>
+                !comingSoon && navigate(`/exploration/${exp.id}`)
+              }
+            >
+              <div
+                className="card-preview"
+                style={{
+                  padding: 0,
+                  overflow: "hidden",
+                  background: "#e8e4e0",
+                  position: "relative",
+                }}
+              >
+                <img
+                  src={exp.images[0]}
+                  alt={exp.title}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                  }}
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none"
+                  }}
+                />
+
+                {comingSoon && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: "rgba(235,248,250,0.5)",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: 11,
+                        letterSpacing: "0.14em",
+                        textTransform: "uppercase",
+                        color: "var(--text-muted)",
+                        fontFamily: "var(--sans)",
+                      }}
+                    >
+                      Coming Soon
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              <div className="card-info">
+                <p className="card-title">{exp.title}</p>
+                <p className="card-subtitle">{exp.subtitle}</p>
+              </div>
             </div>
-            <div className="card-info">
-              <p className="card-title">{exp.title}</p>
-              <p className="card-subtitle">{exp.subtitle}</p>
-            </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </section>
   )

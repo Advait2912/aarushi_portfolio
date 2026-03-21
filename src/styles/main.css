@@ -8,7 +8,7 @@ body{font-family:'DM Sans',sans-serif;background:transparent;color:#0B757B;line-
 :root{
   --bg:lab(92.22% -13.94 -4.11);--text:#0B757B;--text-muted:#388b8b;
   --indigo:#0A858C;--indigo-light:rgba(10,133,140,0.1);
-  --terracotta:#D89C8A;--terracotta-light:rgba(216,156,138,0.12);
+  --terracotta:#5cdce3;--terracotta-light:rgba(216,156,138,0.12);
   --sage:#8FA7A3;--sage-light:rgba(143,167,163,0.12);
   --white:lab(95.61% -9.24 -2.61);--border:rgba(31,31,31,0.1);
   --serif:'DM Serif Display',serif;--sans:'DM Sans',sans-serif;--hand:'Caveat',cursive;

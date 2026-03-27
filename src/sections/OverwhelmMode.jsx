@@ -43,6 +43,7 @@ const randInt = (min, max) => Math.floor(rand(min, max))
 
 export default function OverwhelmMode() {
   const ref          = useRef(null)
+  const runIdRef = useRef(0)
   const elementsRef  = useRef([])
   const timeoutsRef  = useRef([])
   const [phase, setPhase] = useState("idle")
@@ -59,21 +60,31 @@ export default function OverwhelmMode() {
   }, [])
 
   const clearAll = () => {
-    timeoutsRef.current.forEach(clearTimeout)
+    timeoutsRef.current.forEach(t => clearTimeout(t))
     timeoutsRef.current = []
-    elementsRef.current.forEach(el => el?.remove())
+
+    elementsRef.current.forEach(el => {
+      if (el && el.parentNode) el.parentNode.removeChild(el)
+    })
     elementsRef.current = []
   }
 
   const triggerChaos = () => {
-    if (phase !== "idle" && phase !== "resolved") return
+    
+    if (timeoutsRef.current.length > 0) return
+
+    runIdRef.current += 1        // 🚨 FIRST invalidate
+    const currentRun = runIdRef.current
+
+    clearAll()         
+    timeoutsRef.current = []          // THEN clean
     setPhase("chaos")
-    clearAll()
 
     const shuffled = [...processImages].sort(() => Math.random() - 0.5)
 
     shuffled.forEach((src, i) => {
       const t = setTimeout(() => {
+        if (runIdRef.current !== currentRun) return
         const el     = document.createElement("div")
         const w      = randInt(140, 260)
         const left   = rand(4, 78)
@@ -112,6 +123,8 @@ export default function OverwhelmMode() {
         elementsRef.current.push(el)
 
         requestAnimationFrame(() => requestAnimationFrame(() => {
+          if (runIdRef.current !== currentRun) return
+          if (!el || !el.isConnected) return
           el.style.opacity   = "1"
           el.style.transform = `rotate(${rotate}deg) scale(1)`
         }))
@@ -123,18 +136,24 @@ export default function OverwhelmMode() {
     const resolveDelay = shuffled.length * 280 + 2000
 
     const resolve = setTimeout(() => {
+      if (runIdRef.current !== currentRun) return
       setPhase("resolving")
 
       elementsRef.current.forEach((el, i) => {
-        setTimeout(() => {
-          el.style.opacity    = "0"
+        const t = setTimeout(() => {
+          if (runIdRef.current !== currentRun) return
+
+          if (!el || !el.isConnected) return
+          el.style.opacity = "0"
           el.style.transform  = el.style.transform.replace(/scale\([^)]+\)/, "scale(0.75)")
           el.style.transition = "opacity 0.6s ease, transform 0.6s ease"
         }, i * 60)
+
+        timeoutsRef.current.push(t) // ✅ THIS WAS MISSING
       })
 
       const done = setTimeout(() => {
-        clearAll()
+        if (runIdRef.current !== currentRun) return
         setPhase("resolved")
       }, shuffled.length * 60 + 800)
 
@@ -303,7 +322,12 @@ export default function OverwhelmMode() {
             <button
               className="stress-btn"
               style={{ marginTop: 24, fontSize: 13 }}
-              onClick={() => setPhase("idle")}
+              onClick={() => {
+                runIdRef.current += 1   // 🚨 invalidate EVERYTHING first
+                clearAll()
+                timeoutsRef.current = []
+                setPhase("idle")
+              }}
             >
               Reset
             </button>

@@ -195,7 +195,7 @@ export default function SystemInputs() {
 
 
     {/* SMALLER HEADING */}
-    <div className="fade-up">
+    <div className="fade-up" style={{ textAlign: "center" }}>
       <h2 style={{
         fontFamily: "var(--serif)",
         fontSize: "clamp(24px,3vw,36px)", // 👈 reduced
@@ -205,18 +205,15 @@ export default function SystemInputs() {
         What Shapes My Thinking
       </h2>
 
-      <span style={{
+      <p style={{
         fontSize: "10px",
         letterSpacing: ".2em",
         textTransform: "uppercase",
         color: "var(--text-muted)",
-        display: "flex",
-        alignItems: "center",
-        gap: "12px",
+        textAlign: "center",
       }}>
         The disciplines that inform how I design
-        <span style={{ flex: 1, height: "1px", background: "var(--border)" }} />
-      </span>
+      </p>
     </div>
 
 

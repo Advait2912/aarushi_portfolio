@@ -52,34 +52,40 @@ const projects = [
 
   {
     id: "emotion-ai",
-    pdf: "",
-    title: "Emotion AI App",
+    pdf: "/pdfs/fintech.pdf",
+    title: "Fintech App Design",
     subtitle: "Experience Design · AI",
     tags: ["Experience Design", "AI"],
     desc: (
       <>
         <p>
-          An emotional intelligence interface that helps users understand and navigate
-          their emotional patterns.
+          PennyWise is a financial literacy app designed to make money management simple and engaging for 
+          young adults.
         </p>
         <p>
-          It uses AI-assisted reflection to support awareness and decision-making.
+          The app breaks down complex financial topics into bite-sized lessons and uses gamification—like 
+          streaks, rewards, and quizzes—to keep users motivated. It also connects learning with real-life 
+          actions through features like coupons, offers, and progress tracking.
+        </p>
+        <p>
+         The design focuses on clarity, intuitive navigation, and visually engaging content, making finance
+          feel less intimidating and easier to understand.
         </p>
       </>
     ),
     problem: (
       <>
         <p>
-          People struggle to identify emotional patterns that affect their decisions
-          and relationships.
+          Young adults in India are entering financial independence without the right knowledge or tools to manage money. Limited awareness of budgeting, investments, 
+          and financial planning leads to poor spending habits and low confidence in handling finances
         </p>
       </>
     ),
-    skills: ["Psychology", "UX Design", "Behavioural Science", "Prototyping"],
+    skills: ["Typography", "Layout Design", "Branding", "Social Media Design","Visual Hierarchy","Color Use"],
     outcome: (
       <>
         <p>
-          A conversational journal concept with emotion mapping and pattern recognition.
+         A simple and engaging app that helps young users build better financial habits through interactive learning and practical tools.
         </p>
       </>
     ),

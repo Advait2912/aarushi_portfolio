@@ -321,7 +321,7 @@ export default function OverwhelmMode() {
             </p>
             <button
               className="stress-btn"
-              style={{ marginTop: 24, fontSize: 13 }}
+              style={{ marginTop: 24, fontSize: 13, zIndex:100 }}
               onClick={() => {
                 runIdRef.current += 1   // 🚨 invalidate EVERYTHING first
                 clearAll()

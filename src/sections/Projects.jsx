@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 const projects = [
   { id: "meta-counsel",  title: "Krate Kart",    subtitle: "Vendor Ecosystem",       image: "/images_projects/title_1.jpeg" },
-  { id: "emotion-ai",   title: "Emotion AI App", subtitle: "Experience Design · AI", image: null, placeholder: true },
+  { id: "emotion-ai",   title: "Fintech App Design", subtitle: "PennyWise . Personal Finance Simplified", image: "/images_projects/project2.png" },
   { id: "sleep-system", title: "YuluWalk",        subtitle: "Urban Explorations",     image: "/images_projects/title_3.jpeg" },
   { id: null,           title: "Coming Soon",     subtitle: "In Progress",            image: null, placeholder: true },
 ]

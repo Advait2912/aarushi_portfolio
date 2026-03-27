@@ -53,8 +53,8 @@ const projects = [
   {
     id: "emotion-ai",
     pdf: "/pdfs/fintech.pdf",
-    title: "Fintech App Design",
-    subtitle: "Experience Design · AI",
+    title: "PennyWise",
+    subtitle: "Personal Finance Simplified",
     tags: ["Experience Design", "AI"],
     desc: (
       <>
@@ -81,7 +81,7 @@ const projects = [
         </p>
       </>
     ),
-    skills: ["Typography", "Layout Design", "Branding", "Social Media Design","Visual Hierarchy","Color Use"],
+    skills: ["User Research", "UX Design", "UI Design", "Gamification","Visual Design","Information Architecture"],
     outcome: (
       <>
         <p>

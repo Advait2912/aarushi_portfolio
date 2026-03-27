@@ -1,14 +1,14 @@
 import { useRef, useEffect, useState, useCallback } from "react"
 
 const influences = [
-  { label: "Psychology",           x: "36%", y: "4%",  desc: "Understanding what people feel, even when they can't explain it." },
+  { label: "Psychology",           x: "30%", y: "4%",  desc: "Understanding what people feel, even when they can't explain it." },
   { label: "Pattern Recognition",  x: "58%", y: "20%", desc: "Finding connections across people, systems, and experiences." },
   { label: "Systems Thinking",     x: "60%", y: "45%", desc: "Seeing the bigger picture behind how everything works." },
   { label: "Service Design",       x: "60%", y: "72%", desc: "Bringing everything together into real-world experiences." },
-  { label: "Research",             x: "34%", y: "84%", desc: "Sitting with the problem before trying to solve it." },
-  { label: "Behavioural Science",  x: "4%",  y: "72%", desc: "People are irrational in predictable ways. Design for who they are, not who we wish they were." },
-  { label: "Visual Communication", x: "-2%",  y: "44%", desc: "Making ideas clear, visual, and meaningful." },
-  { label: "Emotional Insight",    x: "4%",  y: "16%", desc: "Noticing what people feel beneath the surface." },
+  { label: "Research",             x: "30%", y: "84%", desc: "Sitting with the problem before trying to solve it." },
+  { label: "Behavioural Science",  x: "-6%",  y: "72%", desc: "People are irrational in predictable ways. Design for who they are, not who we wish they were." },
+  { label: "Visual Communication", x: "-12%",  y: "44%", desc: "Making ideas clear, visual, and meaningful." },
+  { label: "Emotional Insight",    x: "-6%",  y: "16%", desc: "Noticing what people feel beneath the surface." },
 ]
 
 const CENTER = { x: "36%", y: "46%" }
@@ -72,142 +72,169 @@ export default function SystemInputs() {
   return (
     <section id="system-inputs" className="system-inputs" ref={sectionRef} style={{ alignItems: "stretch", padding: 0 }}>
 
+
+   
+        <div style={{
+  display: "grid",
+  gridTemplateColumns: "1.1fr 0.9fr",
+  width: "100%",
+  padding: "100px 60px 100px 2vw",
+  gap: "60px",
+  alignItems: "start",
+}}>
+
+  {/* ───────── LEFT SIDE (TEXT ONLY) ───────── */}
+  <div className="fade-up" style={{ maxWidth: "640px" }}>
+
+    <h2 style={{
+      fontFamily: "var(--serif)",
+      fontSize: "clamp(32px,4vw,52px)",
+      fontWeight: 400,
+      marginBottom: "28px",
+    }}>
+      A Little About Me
+    </h2>
+
+    <p style={{ lineHeight: 1.9, fontSize: "17px", marginBottom: "20px" }}>
+      I’m a Business Services & Systems Designer who’s always been drawn to the messy, in-between spaces - the places where things don’t quite fit neatly 
+      into one box. That’s where I find the most interesting problems, and honestly, the most meaningful work.
+    </p>
+
+    <p style={{ lineHeight: 1.9, fontSize: "17px", marginBottom: "30px" }}>
+      My approach sits at the intersection of research, strategy, and visual thinking. I like to zoom 
+      out to understand how systems behave - where they break, who they serve, and why they exist the way they do - 
+      and then zoom back in to shape something clearer, more intentional, and easier to navigate. For me, design isn’t just about making things 
+      look good; it’s about making sense of complexity and building systems that actually work for people.
+    </p>
+
+    <h3 style={{
+  fontSize: "20px",          // 👈 slightly bigger
+  fontWeight: 600,           // 👈 more emphasis
+  marginBottom: "14px",      // 👈 better spacing
+  letterSpacing: "-0.01em"   // 👈 subtle polish
+}}>
+      How I Think
+    </h3>
+
+    <p style={{ lineHeight: 1.9, fontSize: "17px", marginBottom: "20px" }}>
+      Curiosity is a big part of how I move through the world. I tend to ask “why” a lot - sometimes more than necessary - 
+      but it’s how I uncover the assumptions hidden inside systems. I enjoy mapping 
+      relationships, connecting dots across disciplines, and noticing patterns that aren’t immediately obvious.
+    </p>
+    <p style={{ lineHeight: 1.9, fontSize: "17px", marginBottom: "20px" }}>
+      I’m especially interested in how people experience systems emotionally, not just functionally. The way something is designed can shape how someone feels - whether that’s 
+      clarity, frustration, ease, or overwhelm - and I try to stay mindful of that in the way I approach my work.
+    </p>
+
+   <h3 style={{
+  fontSize: "20px",          // 👈 slightly bigger
+  fontWeight: 600,           // 👈 more emphasis
+  marginBottom: "14px",      // 👈 better spacing
+  letterSpacing: "-0.01em"   // 👈 subtle polish
+}}>
+      What I Care About
+    </h3>
+
+    <p style={{ lineHeight: 1.9, fontSize: "17px",marginBottom: "20px" }}>
+      Alongside systems and strategy, I’ve developed a strong interest in mental health and emotional well-being. I’m curious about how design can create safer, 
+      more supportive experiences — especially in spaces where people might already feel vulnerable or uncertain.
+    </p>
+    <p style={{ lineHeight: 1.9, fontSize: "17px",marginBottom: "20px" }}>
+     Whether it’s simplifying access to services, reducing friction, or just making something feel a little more human,
+      I think small design decisions can have a real impact on how people navigate their lives. 
+     This perspective naturally shapes the kind of problems I’m drawn to and the way I think about solutions.
+    </p>
+
+  </div>
+
+
+  {/* ───────── RIGHT SIDE (IMAGE + CONSTELLATION) ───────── */}
+  <div style={{ display: "flex", flexDirection: "column", gap: "60px" }}>
+
+    {/* IMAGE (same as yours, unchanged logic) */}
+    <div
+      className="fade-up"
+      style={{ maxWidth: "320px",width:"100%",alignSelf: "center" }} 
+      onMouseEnter={() => setImgHovered(true)}
+      onMouseLeave={() => setImgHovered(false)}
+    >
       <div style={{
-        display: "flex",
-        flexDirection: "column",
         width: "100%",
-        minHeight: "100%",
+        aspectRatio: "3/4",
+        borderRadius: "16px",
+        border: "1px solid var(--border)",
+        overflow: "hidden",
+        position: "relative",
       }}>
+        <img
+          src="/images/image-default.png"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: imgHovered ? 0 : 1,
+            transition: "0.5s"
+          }}
+        />
+        <img
+          src="/images/image-hover.png"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: imgHovered ? 1 : 0,
+            transition: "0.5s"
+          }}
+        />
+      </div>
+    </div>
 
-        {/* ── TOP ROW: About Me text + Photo side by side ── */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 300px",
-          width: "100%",
-          padding: "100px 60px 0 2vw",
-          gap: "40px",
-          alignItems: "start",
-        }}>
 
-          {/* About Me text */}
-          <div className="fade-up" style={{ marginBottom: "0" }}>
-            <h2 style={{
-              fontFamily: "var(--serif)", fontSize: "clamp(30px,4vw,52px)",
-              fontWeight: 400, lineHeight: 1.1, marginBottom: "16px",
-            }}>
-              About Me
-            </h2>
-            <p style={{ fontSize: "15px", fontWeight: 300, lineHeight: 1.85, color: "var(--text)", maxWidth: "500px", marginBottom: "12px" }}>
-              I'm a Business Services & Systems Designer who believes the most interesting problems live at the edges of disciplines. I work at the intersection of research, strategy, and visual thinking to turn complexity into clarity.
-            </p>
-            <p style={{ fontSize: "13px", fontWeight: 300, lineHeight: 1.75, color: "var(--text-muted)", maxWidth: "500px" }}>
-              When I'm not mapping systems, I'm probably questioning why the system exists in the first place.
-            </p>
-          </div>
+    {/* SMALLER HEADING */}
+    <div className="fade-up">
+      <h2 style={{
+        fontFamily: "var(--serif)",
+        fontSize: "clamp(24px,3vw,36px)", // 👈 reduced
+        fontWeight: 400,
+        marginBottom: "10px"
+      }}>
+        What Shapes My Thinking
+      </h2>
 
-          {/* ── Photo — aligned only with About Me text, shifted up ── */}
-          <div
-            className="fade-up"
-            style={{ transitionDelay: "0.15s", marginTop: "-40px" }}
-            onMouseEnter={() => setImgHovered(true)}
-            onMouseLeave={() => setImgHovered(false)}
-          >
-            <div style={{
-              width: "100%",
-              aspectRatio: "3/4",
-              borderRadius: "16px",
-              border: "1px solid var(--border)",
-              background: "var(--white)",
-              overflow: "hidden",
-              position: "relative",
-              cursor: "pointer",
-            }}>
-              {/* Default image */}
-              <img
-                src="/images/image-default.png"
-                alt="Aarushi"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  opacity: imgHovered ? 0 : 1,
-                  transition: "opacity 0.5s ease",
-                }}
-                onError={(e) => { e.target.style.display = "none" }}
-              />
-              {/* Hover image */}
-              <img
-                src="/images/image-hover.png"
-                alt="Aarushi alternate"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  opacity: imgHovered ? 1 : 0,
-                  transition: "opacity 0.5s ease",
-                }}
-                onError={(e) => { e.target.style.display = "none" }}
-              />
-              {/* Fallback placeholder (shown when images fail) */}
-              <div style={{
-                position: "absolute",
-                inset: 0,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "10px",
-                color: "var(--text-muted)",
-                fontSize: "11px",
-                letterSpacing: ".1em",
-                textTransform: "uppercase",
-                zIndex: -1,
-              }}>
-                <span style={{ fontSize: "40px", opacity: 0.15 }}>◻</span>
-                Photo
-              </div>
-            </div>
-          </div>
+      <span style={{
+        fontSize: "10px",
+        letterSpacing: ".2em",
+        textTransform: "uppercase",
+        color: "var(--text-muted)",
+        display: "flex",
+        alignItems: "center",
+        gap: "12px",
+      }}>
+        The disciplines that inform how I design
+        <span style={{ flex: 1, height: "1px", background: "var(--border)" }} />
+      </span>
+    </div>
 
-        </div>{/* end top row */}
 
-        {/* ── BOTTOM ROW: What Shapes My Thinking + Constellation (full width) ── */}
-        <div style={{
-          padding: "60px 60px 100px 2vw",
-          display: "flex",
-          flexDirection: "column",
-          gap: "0",
-        }}>
+    {/* CONSTELLATION → KEEP YOUR ORIGINAL BLOCK */}
+    <div
+      ref={constellationRef}
+      className="constellation fade-up"
+      style={{
+        height: 480,
+        position: "relative",
+        width: "100%",
+        marginLeft: "40px" // 👈 ONLY ADD THIS
+      }}
+    >
 
-          {/* What Shapes My Thinking */}
-          <div className="fade-up" style={{ transitionDelay: "0.1s", marginBottom: "40px" }}>
-            <h2 style={{
-              fontFamily: "var(--serif)", fontSize: "clamp(30px,4vw,52px)",
-              fontWeight: 400, lineHeight: 1.1, marginBottom: "12px",
-            }}>
-              What Shapes My Thinking
-            </h2>
-            <span style={{
-              fontSize: "10px", letterSpacing: ".2em", textTransform: "uppercase",
-              color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "12px",
-              marginBottom: "14px",
-            }}>
-              The disciplines that inform how I design
-              <span style={{ flex: 1, height: "1px", background: "var(--border)", display: "inline-block" }} />
-            </span>
-          </div>
-
-          {/* Constellation — same width as left col only */}
-          <div
-            ref={constellationRef}
-            className="constellation fade-up"
-            style={{ height: 480, position: "relative", width: "100%" }}
-          >
-            <svg style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none" }}>
+      {/* 🔴 COPY EVERYTHING FROM YOUR ORIGINAL CONSTELLATION HERE */}
+      {/* svg + center node + influence nodes — unchanged */}
+      <svg style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none" }}>
               {influences.map((inf, i) => {
                 const ix = pct(inf.x, conSize.w)
                 const iy = pct(inf.y, conSize.h)
@@ -283,11 +310,15 @@ export default function SystemInputs() {
                 </div>
               </div>
             ))}
-          </div>
 
-        </div>{/* end bottom row */}
+    </div>
 
-      </div>
+  </div>
+
+</div>
+        
+        
+
     </section>
   )
 }

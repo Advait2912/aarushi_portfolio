@@ -19,8 +19,9 @@ function Portfolio() {
     <div className="portfolio" style={{ paddingTop: "60px" }}>
       <MiniMap />
       <Hero />
-      <SplitMind />
+     
       <SystemInputs />
+       <SplitMind />
       <Projects />
       <SideExplorations />
       <OverwhelmMode />

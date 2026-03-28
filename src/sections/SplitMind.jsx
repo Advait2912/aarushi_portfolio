@@ -120,7 +120,7 @@ function MainImage() {
       style={{
         position: "relative",
         zIndex: 10,
-        width: "60%",
+        width: "70%",
         height: "auto",
         objectFit: "contain",
         display: "block",

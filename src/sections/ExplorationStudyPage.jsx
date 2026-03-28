@@ -18,7 +18,7 @@ const explorations = [
           when images are broken down, layered, and physically reconstructed.
         </p>
         <p>
-          The typographic poster centers around “Om Mani Padme Hum,” using form,
+          The typographic poster centers around "Om Mani Padme Hum," using form,
           color, and composition to evoke stillness and transformation.
         </p>
         <p>
@@ -112,7 +112,6 @@ const explorations = [
         "/images/explorations/3d-modelling/11.jpeg",
         "/images/explorations/3d-modelling/12.jpeg",
         "/images/explorations/3d-modelling/13.jpeg",
-
     ],
   },
 
@@ -149,7 +148,7 @@ const explorations = [
       </>
     ),
     problem:
-      "It’s hard to grab attention today—especially on social media. Posters and ads need to communicate quickly while still looking good and staying true to a brand.",
+      "It's hard to grab attention today—especially on social media. Posters and ads need to communicate quickly while still looking good and staying true to a brand.",
     skills: [
       "Typography",
       "Layout Design",
@@ -196,22 +195,20 @@ const explorations = [
     ],
     outcome:
       "A series of material studies that question how weight, texture, and surface communicate meaning beyond the visual.",
-    images: [/* same */],
+    images: [],
   },
 ]
 
 const CARD_W = 160
 const CARD_H = 200
 
-// Each card runs its own rAF loop, receiving live container size via ref
 function FloatingImage({ src, index, total, boundsRef }) {
   const [pos, setPos] = useState({ x: 0, y: 0 })
   const [hovered, setHovered] = useState(false)
   const animRef = useRef(null)
-  const posRef = useRef(null)   // null = not yet initialised
+  const posRef = useRef(null)
   const velRef = useRef({ x: 0, y: 0 })
 
-  // Initialise once boundsRef has real dimensions
   useEffect(() => {
     const tryInit = () => {
       const b = boundsRef.current
@@ -220,14 +217,12 @@ function FloatingImage({ src, index, total, boundsRef }) {
       const maxX = b.w / 2 - CARD_W / 2
       const maxY = b.h / 2 - CARD_H / 2
 
-      // Spread cards evenly around the arena
       const angle = (index / total) * Math.PI * 2
       const rx = maxX * 0.6
       const ry = maxY * 0.6
       const initX = Math.cos(angle) * rx * (0.5 + Math.random() * 0.5)
       const initY = Math.sin(angle) * ry * (0.5 + Math.random() * 0.5)
 
-      // Faster initial speed: 1.2 – 2.0 px/frame
       const speed = 1.2 + Math.random() * 0.8
       const dir = angle + Math.PI / 2 + (Math.random() - 0.5) * 1.2
       const vx = Math.cos(dir) * speed
@@ -245,7 +240,7 @@ function FloatingImage({ src, index, total, boundsRef }) {
       if (animRef.current) cancelAnimationFrame(animRef.current)
       return
     }
-    if (!posRef.current) return   // not yet initialised
+    if (!posRef.current) return
 
     const MIN_SPEED = 0.8
     const MAX_SPEED = 2.2
@@ -263,13 +258,11 @@ function FloatingImage({ src, index, total, boundsRef }) {
       x += vx
       y += vy
 
-      // Hard bounce off all four walls
       if (x >= maxX)  { x = maxX;  vx = -Math.abs(vx) }
       if (x <= -maxX) { x = -maxX; vx =  Math.abs(vx) }
       if (y >= maxY)  { y = maxY;  vy = -Math.abs(vy) }
       if (y <= -maxY) { y = -maxY; vy =  Math.abs(vy) }
 
-      // Keep speed in range — no damping, no slowdown
       const spd = Math.sqrt(vx * vx + vy * vy)
       if (spd < MIN_SPEED) { vx = (vx / spd) * MIN_SPEED; vy = (vy / spd) * MIN_SPEED }
       if (spd > MAX_SPEED) { vx = (vx / spd) * MAX_SPEED; vy = (vy / spd) * MAX_SPEED }
@@ -328,7 +321,6 @@ function FloatingImage({ src, index, total, boundsRef }) {
   )
 }
 
-// Measures its own size and feeds live bounds to each card
 function FloatingArena({ images }) {
   const arenaRef = useRef(null)
   const boundsRef = useRef({ w: 0, h: 0 })
@@ -379,7 +371,7 @@ export default function ExplorationStudyPage() {
     <div style={{ minHeight: "100vh", paddingTop: "60px", position: "relative", zIndex: 2 }}>
       <div className="case-study">
 
-        {/* LEFT — identical to CaseStudyPage */}
+        {/* LEFT */}
         <div className="case-left">
           <div>
             <p className="section-label">Side Exploration</p>
@@ -439,10 +431,19 @@ export default function ExplorationStudyPage() {
           </button>
         </div>
 
-        {/* RIGHT — floating images */}
-        <div className="case-right" style={{ position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
-
-          {/* Subtle hint text */}
+        {/* RIGHT — sticky floating images */}
+        <div
+          className="case-right"
+          style={{
+            position: "sticky",
+            top: "60px",
+            height: "calc(100vh - 60px)",
+            overflow: "hidden",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <p style={{
             position: "absolute",
             bottom: 28,
@@ -460,7 +461,6 @@ export default function ExplorationStudyPage() {
             Hover to pause
           </p>
 
-          {/* Floating arena — measures itself */}
           <FloatingArena images={exploration.images} />
         </div>
 

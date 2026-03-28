@@ -61,7 +61,7 @@ function BgLayer({ src, opacity, seedX, seedY, seedPhase }) {
 
   useEffect(() => {
     const tick = () => {
-      tRef.current += 0.004
+      tRef.current += 0.020
       const x = Math.sin(tRef.current * seedX) * 18
       const y = Math.sin(tRef.current * seedY + 1.3) * 14
       setOffset({ x, y })
@@ -272,11 +272,11 @@ export default function SplitMind() {
             }} />
 
             {/* 5 bg scribble layers drifting at different speeds/phases */}
-            <BgLayer src="/images/bg1.png" opacity={0.55} seedX={0.80} seedY={0.60} seedPhase={0.0} />
-            <BgLayer src="/images/bg2.png" opacity={0.50} seedX={0.50} seedY={0.90} seedPhase={1.2} />
-            <BgLayer src="/images/bg3.png" opacity={0.45} seedX={1.10} seedY={0.40} seedPhase={2.4} />
-            <BgLayer src="/images/bg4.png" opacity={0.50} seedX={0.65} seedY={1.00} seedPhase={0.7} />
-            <BgLayer src="/images/bg5.png" opacity={0.45} seedX={0.90} seedY={0.55} seedPhase={1.9} />
+            <BgLayer src="/images/bg1.png" opacity={0.55} seedX={1.20} seedY={0.60} seedPhase={0.0} />
+            <BgLayer src="/images/bg2.png" opacity={0.50} seedX={0.75} seedY={0.90} seedPhase={1.2} />
+            <BgLayer src="/images/bg3.png" opacity={0.45} seedX={1.60} seedY={0.40} seedPhase={2.4} />
+            <BgLayer src="/images/bg4.png" opacity={0.50} seedX={0.95} seedY={1.00} seedPhase={0.7} />
+            <BgLayer src="/images/bg5.png" opacity={0.45} seedX={1.30} seedY={0.55} seedPhase={1.9} />
 
             {/* Main chaos.png floats gently on top */}
             <MainImage />

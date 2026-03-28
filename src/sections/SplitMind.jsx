@@ -120,7 +120,7 @@ function MainImage() {
       style={{
         position: "relative",
         zIndex: 10,
-        width: "66%",
+        width: "60%",
         height: "auto",
         objectFit: "contain",
         display: "block",
@@ -157,7 +157,10 @@ export default function SplitMind() {
         #split-mind {
           align-items: stretch;
         }
-
+        #split-mind:has(.logic-side:hover),
+        #split-mind:has(.chaos-side:hover) {
+          grid-template-columns: 1fr 1fr !important;
+        }
         .chaos-side {
           position: relative !important;
           overflow: hidden !important;
@@ -166,14 +169,14 @@ export default function SplitMind() {
         }
 
         .logic-side .section-label { font-size: 13px; letter-spacing: .22em; }
-        .logic-title  { font-size: clamp(40px, 4.2vw, 62px) !important; }
+        .logic-title  { font-size: clamp(32px, 3.2vw, 48px) !important; }
         .step-name    { font-size: 20px !important; }
         .step-desc    { font-size: 16px !important; line-height: 1.75 !important; }
         .step-num     { font-size: 14px !important; padding-top: 4px !important; }
 
         .chaos-title {
           white-space: nowrap;
-          font-size: clamp(16px, 1.6vw, 24px) !important;
+          font-size: clamp(32px, 3.2vw, 48px) !important;
         }
 
         .chaos-header {
@@ -254,9 +257,8 @@ export default function SplitMind() {
           </div>
 
           <p className="chaos-intro-text fade-up" style={{ transitionDelay: "0.2s" }}>
-            This is what my thinking actually looks like.<br />
-            Not clear. Not linear.<br />
-            Just questions looping over each other<br />until something starts to settle.
+            This is what my thinking actually looks like. Not clear. Not linear.<br />
+            Just questions looping over each other until something starts to settle.
           </p>
 
           {/* Arena: dark bg + scribble layers + chaos.png on top, all clipped */}

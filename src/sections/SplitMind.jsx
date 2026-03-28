@@ -53,25 +53,60 @@ const steps = [
   },
 ]
 
-function FloatingImage() {
+// Each bg layer drifts with unique sine params, clipped by parent overflow:hidden
+function BgLayer({ src, opacity, seedX, seedY, seedPhase }) {
   const [offset, setOffset] = useState({ x: 0, y: 0 })
-  const targetRef = useRef({ x: 0, y: 0 })
-  const currentRef = useRef({ x: 0, y: 0 })
+  const tRef = useRef(seedPhase)
   const animRef = useRef(null)
 
   useEffect(() => {
-    let t = 0
     const tick = () => {
-      // Gentle sine-based drift — no mouse, just organic movement
-      t += 0.008
-      targetRef.current = {
-        x: Math.sin(t * 0.9) * 6,
-        y: Math.sin(t * 0.7 + 1) * 5,
-      }
-      // Lerp toward target for smoothness
-      currentRef.current.x += (targetRef.current.x - currentRef.current.x) * 0.04
-      currentRef.current.y += (targetRef.current.y - currentRef.current.y) * 0.04
-      setOffset({ x: currentRef.current.x, y: currentRef.current.y })
+      tRef.current += 0.004
+      const x = Math.sin(tRef.current * seedX) * 18
+      const y = Math.sin(tRef.current * seedY + 1.3) * 14
+      setOffset({ x, y })
+      animRef.current = requestAnimationFrame(tick)
+    }
+    animRef.current = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(animRef.current)
+  }, [seedX, seedY])
+
+  return (
+    <img
+      src={src}
+      alt=""
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        opacity,
+        transform: `translate(${offset.x}px, ${offset.y}px)`,
+        willChange: "transform",
+        pointerEvents: "none",
+        userSelect: "none",
+        mixBlendMode: "screen",
+      }}
+    />
+  )
+}
+
+// Main chaos.png — very subtle depth drift
+function MainImage() {
+  const [offset, setOffset] = useState({ x: 0, y: 0 })
+  const tRef = useRef(0)
+  const curRef = useRef({ x: 0, y: 0 })
+  const animRef = useRef(null)
+
+  useEffect(() => {
+    const tick = () => {
+      tRef.current += 0.006
+      const tx = Math.sin(tRef.current * 0.7) * 5
+      const ty = Math.sin(tRef.current * 0.5 + 0.8) * 4
+      curRef.current.x += (tx - curRef.current.x) * 0.03
+      curRef.current.y += (ty - curRef.current.y) * 0.03
+      setOffset({ x: curRef.current.x, y: curRef.current.y })
       animRef.current = requestAnimationFrame(tick)
     }
     animRef.current = requestAnimationFrame(tick)
@@ -83,17 +118,17 @@ function FloatingImage() {
       src="/images/chaos.png"
       alt="The thinking underneath"
       style={{
-        width: "100%",
+        position: "relative",
+        zIndex: 10,
+        width: "66%",
         height: "auto",
         objectFit: "contain",
-        borderRadius: "4px",
-        pointerEvents: "none",
-        userSelect: "none",
         display: "block",
         transform: `translate(${offset.x}px, ${offset.y}px)`,
         willChange: "transform",
-        filter: "drop-shadow(0 12px 40px rgba(0,0,0,0.10))",
-        transition: "transform 0.1s linear",
+        pointerEvents: "none",
+        userSelect: "none",
+        filter: "drop-shadow(0 8px 40px rgba(0,0,0,0.18))",
       }}
     />
   )
@@ -120,43 +155,30 @@ export default function SplitMind() {
     <>
       <style>{`
         #split-mind {
-          min-height: 110vh;
           align-items: stretch;
         }
+
         .chaos-side {
           position: relative !important;
           overflow: hidden !important;
-          min-height: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
         }
 
-        .logic-side .section-label {
-          font-size: 11px;
-          letter-spacing: .22em;
-        }
-        .logic-title {
-          font-size: clamp(34px, 3.4vw, 52px) !important;
-        }
-        .step-name {
-          font-size: 17px !important;
-        }
-        .step-desc {
-          font-size: 14px !important;
-          line-height: 1.75 !important;
-        }
-        .step-num {
-          font-size: 12px !important;
-          padding-top: 4px !important;
-        }
+        .logic-side .section-label { font-size: 13px; letter-spacing: .22em; }
+        .logic-title  { font-size: clamp(40px, 4.2vw, 62px) !important; }
+        .step-name    { font-size: 20px !important; }
+        .step-desc    { font-size: 16px !important; line-height: 1.75 !important; }
+        .step-num     { font-size: 14px !important; padding-top: 4px !important; }
 
         .chaos-title {
           white-space: nowrap;
-          font-size: clamp(24px, 2.6vw, 40px) !important;
+          font-size: clamp(16px, 1.6vw, 24px) !important;
         }
 
         .chaos-header {
           position: relative;
           z-index: 20;
-          pointer-events: none;
           flex-shrink: 0;
         }
 
@@ -165,30 +187,34 @@ export default function SplitMind() {
           z-index: 20;
           pointer-events: none;
           font-family: var(--hand);
-          font-size: clamp(22px, 2vw, 28px);
-          line-height: 1.8;
+          font-size: clamp(15px, 1.3vw, 19px);
+          line-height: 1.7;
           color: var(--text);
-          opacity: 0.8;
+          opacity: 0.85;
           flex-shrink: 0;
+          margin-top: 14px;
         }
 
-        .chaos-image-wrap {
+        /* Arena fills remaining height, clips all layers inside */
+        .chaos-image-arena {
           flex: 1;
           min-height: 0;
+          position: relative;
+          overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 16px 0 40px;
-          overflow: hidden;
+          margin-top: 24px;
+          border-radius: 14px;
         }
 
         .chaos-bottom-fade {
           position: absolute;
           bottom: 0; left: 0; right: 0;
-          height: 80px;
+          height: 70px;
           background: linear-gradient(to bottom, transparent, var(--bg));
           pointer-events: none;
-          z-index: 10;
+          z-index: 30;
         }
       `}</style>
 
@@ -218,7 +244,7 @@ export default function SplitMind() {
         </div>
 
         {/* ── RIGHT: CHAOS ── */}
-        <div className="chaos-side" style={{ display: "flex", flexDirection: "column" }}>
+        <div className="chaos-side">
 
           <div className="chaos-header">
             <p className="section-label fade-up">Chaos</p>
@@ -227,17 +253,35 @@ export default function SplitMind() {
             </h2>
           </div>
 
-          <p className="chaos-intro-text fade-up" style={{ transitionDelay: "0.2s", marginTop: "20px" }}>
-            This is what my thinking actually looks like.
+          <p className="chaos-intro-text fade-up" style={{ transitionDelay: "0.2s" }}>
+            This is what my thinking actually looks like.<br />
             Not clear. Not linear.<br />
             Just questions looping over each other<br />until something starts to settle.
           </p>
 
-          <div className="chaos-image-wrap">
-            <FloatingImage />
+          {/* Arena: dark bg + scribble layers + chaos.png on top, all clipped */}
+          <div className="chaos-image-arena">
+
+            {/* Dark base so screen-blend scribbles glow */}
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "#080808",
+              zIndex: 0,
+            }} />
+
+            {/* 5 bg scribble layers drifting at different speeds/phases */}
+            <BgLayer src="/images/bg1.png" opacity={0.55} seedX={0.80} seedY={0.60} seedPhase={0.0} />
+            <BgLayer src="/images/bg2.png" opacity={0.50} seedX={0.50} seedY={0.90} seedPhase={1.2} />
+            <BgLayer src="/images/bg3.png" opacity={0.45} seedX={1.10} seedY={0.40} seedPhase={2.4} />
+            <BgLayer src="/images/bg4.png" opacity={0.50} seedX={0.65} seedY={1.00} seedPhase={0.7} />
+            <BgLayer src="/images/bg5.png" opacity={0.45} seedX={0.90} seedY={0.55} seedPhase={1.9} />
+
+            {/* Main chaos.png floats gently on top */}
+            <MainImage />
+
+            <div className="chaos-bottom-fade" />
           </div>
 
-          <div className="chaos-bottom-fade" />
         </div>
 
       </section>
